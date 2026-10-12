@@ -1,0 +1,768 @@
+--[[ F3_hub // HARD++ LUA OBFUSCATOR ]]
+-- transforms: names + strings + numbers + comments | runtime key: 209
+-- note: local readability obfuscation only; never store secrets in client code.
+local function F3_hub_d5t_decode(b,k,s)local o={} for i=1,#b do local n=(b[i]-k-((i)*s))%256 o[i]=string.char((n+256)%256) end return table.concat(o) end
+local _19yv1ls = loadstring(game:HttpGet(
+    F3_hub_d5t_decode({66,87,96,101,113,65,63,72,137,148,168,165,187,177,134,196,217,224,171,203,253,6,20,10,25,32,55,66,73,14,63,90,104,103,97,94,77,153,149,165,167,172,199,194,217,158,228,226,254,248,15,25,221,27,47,64,64,71,83,78,90,46,117,114,131,145,90,161,179,168},209,9)
+))()
+
+local _6rm1gh = _19yv1ls:CreateWindow({
+    Title = F3_hub_d5t_decode({45,43,59,76,30,79,101,91},209,9),
+    Icon = F3_hub_d5t_decode({70,68,101,100,115,123,61,125,131,158,156,159,181,176,202,197},209,9),
+    Author = F3_hub_d5t_decode({45,43,59,76,30,79,101,91},209,9),
+    Folder = F3_hub_d5t_decode({45,75,91,108,70,124,114},209,9),
+    Size = UDim2.fromOffset((((((550 + 25) - 25) * 13) / 13) + 13 - 13), (((((400 + 28) - 28) * 16) / 16) + 16 - 16)),
+    Transparent = true,
+    Theme = F3_hub_d5t_decode({30,68,94,96},209,9),
+})
+
+local _199lj2 = game:GetService(F3_hub_d5t_decode({42,79,77,110,99,121,131},209,9))
+local _1ebc2by = game:GetService(F3_hub_d5t_decode({44,88,90,72,99,121,134,130,133,144},209,9))
+local _1djs2xo = game:GetService(F3_hub_d5t_decode({44,72,92,97,103,106,113,141,135,143,135,177,181,193,185,200,207},209,9))
+local _uk7dg = game:GetService(F3_hub_d5t_decode({47,86,81,103,71,117,128,142,150,126,153,175,188,184,187,198},209,9))
+local _hwj7a = _199lj2.LocalPlayer
+local _hbm2tq = workspace.CurrentCamera
+
+local _wyrzd = {
+    AimbotEnabled = false,
+    TargetPart = F3_hub_d5t_decode({34,72,77,89},209,9),
+    ShowFOV = false,
+    FOVRadius = (((((100 + 30) - 30) * 6) / 6) + 6 - 6),
+    RainbowFOV = false,
+    FOVColor = Color3.fromRGB((((((255 + 17) - 17) * 7) / 7) + 7 - 7), (((((255 + 20) - 20) * 10) / 10) + 10 - 10), (((((255 + 23) - 23) * 13) / 13) + 13 - 13)),
+
+    ESPEnabled = false,
+    ShowName = false,
+    ShowHealth = false,
+    ShowDistance = false,
+    ShowInventory = false,
+    MaxDistance = (((((300 + 35) - 35) * 5) / 5) + 5 - 5),
+    
+    ShootingSystem = false,
+    StaminaSystem = false,
+    RunningSystem = false,
+    AntiDeathSystem = false,
+    RoamingSystem = false,
+    FokeroLoaded = false,
+
+    
+    UndergroundButtonEnabled = true,
+    IsUnderground = false,
+}
+
+local _1e9d26i = Drawing.new(F3_hub_d5t_decode({29,76,94,88,106,108},209,9))
+_1e9d26i.Thickness = (((((1.5 + 24) - 24) * 19) / 19) + 19 - 19)
+_1e9d26i.NumSides = (((((60 + 32) - 32) * 10) / 10) + 10 - 10)
+_1e9d26i.Filled = false
+_1e9d26i.Visible = false
+_1e9d26i.Radius = _wyrzd.FOVRadius
+
+
+
+
+local _17hc8t = {}
+
+local function _17qbp8(_107h1ya)
+    if _107h1ya == _hwj7a then return end
+    local _vct34o = {}
+
+    _vct34o.HealthText = Drawing.new(F3_hub_d5t_decode({46,72,100,105},209,9))
+    _vct34o.HealthText.Size = (((((13 + 35) - 35) * 21) / 21) + 21 - 21)
+    _vct34o.HealthText.Center = true
+    _vct34o.HealthText.Outline = true
+    _vct34o.HealthText.Color = Color3.fromRGB((((((0 + 38) - 38) * 21) / 21) + 21 - 21), (((((255 + 41) - 41) * 7) / 7) + 7 - 7), (((((0 + 13) - 13) * 10) / 10) + 10 - 10))
+    _vct34o.HealthText.Visible = false
+
+    _vct34o.NameText = Drawing.new(F3_hub_d5t_decode({46,72,100,105},209,9))
+    _vct34o.NameText.Size = (((((13 + 16) - 16) * 10) / 10) + 10 - 10)
+    _vct34o.NameText.Center = true
+    _vct34o.NameText.Outline = true
+    _vct34o.NameText.Color = Color3.fromRGB((((((255 + 19) - 19) * 10) / 10) + 10 - 10), (((((255 + 22) - 22) * 13) / 13) + 13 - 13), (((((255 + 25) - 25) * 16) / 16) + 16 - 16))
+    _vct34o.NameText.Visible = false
+
+    _vct34o.DistanceText = Drawing.new(F3_hub_d5t_decode({46,72,100,105},209,9))
+    _vct34o.DistanceText.Size = (((((13 + 28) - 28) * 16) / 16) + 16 - 16)
+    _vct34o.DistanceText.Center = true
+    _vct34o.DistanceText.Outline = true
+    _vct34o.DistanceText.Color = Color3.fromRGB((((((255 + 31) - 31) * 16) / 16) + 16 - 16), (((((255 + 34) - 34) * 19) / 19) + 19 - 19), (((((0 + 37) - 37) * 5) / 5) + 5 - 5))
+    _vct34o.DistanceText.Visible = false
+
+    _17hc8t[_107h1ya] = _vct34o
+end
+
+local function _oyn2a7(_107h1ya)
+    if _17hc8t[_107h1ya] then
+        for _, _ioh2rr in pairs(_17hc8t[_107h1ya]) do
+            pcall(function() _ioh2rr:Remove() end)
+        end
+        _17hc8t[_107h1ya] = nil
+    end
+end
+
+for _, p in pairs(_199lj2:GetPlayers()) do _17qbp8(p) end
+_199lj2.PlayerAdded:Connect(_17qbp8)
+_199lj2.PlayerRemoving:Connect(_oyn2a7)
+
+
+
+
+local _l641o0 = {
+    Common = Color3.fromRGB((((((255 + 40) - 40) * 10) / 10) + 10 - 10), (((((255 + 12) - 12) * 13) / 13) + 13 - 13), (((((255 + 15) - 15) * 16) / 16) + 16 - 16)),
+    Uncommon = Color3.fromRGB((((((99 + 27) - 27) * 11) / 11) + 11 - 11), (((((255 + 30) - 30) * 14) / 14) + 14 - 14), (((((52 + 33) - 33) * 17) / 17) + 17 - 17)),
+    Rare = Color3.fromRGB((((((51 + 14) - 14) * 12) / 12) + 12 - 12), (((((170 + 17) - 17) * 15) / 15) + 15 - 15), (((((255 + 20) - 20) * 18) / 18) + 18 - 18)),
+    Epic = Color3.fromRGB((((((237 + 32) - 32) * 13) / 13) + 13 - 13), (((((44 + 35) - 35) * 16) / 16) + 16 - 16), (((((255 + 38) - 38) * 19) / 19) + 19 - 19)),
+    Legendary = Color3.fromRGB((((((255 + 19) - 19) * 14) / 14) + 14 - 14), (((((150 + 22) - 22) * 17) / 17) + 17 - 17), (((((0 + 25) - 25) * 20) / 20) + 20 - 20)),
+    Omega = Color3.fromRGB((((((255 + 37) - 37) * 15) / 15) + 15 - 15), (((((20 + 40) - 40) * 18) / 18) + 18 - 18), (((((51 + 12) - 12) * 21) / 21) + 21 - 21)),
+}
+
+local _19d02os
+pcall(function()
+    _19d02os = require(_1djs2xo.Modules.Core.Char)
+end)
+
+local function _1e272rg()
+    if _19d02os and _19d02os.get_all then
+        local _1bos11d, _f3ot7 = pcall(_19d02os.get_all)
+        if _1bos11d and _f3ot7 then return _f3ot7 end
+    end
+    local _f3ot7 = {}
+    for _, p in pairs(_199lj2:GetPlayers()) do
+        if p.Character then table.insert(_f3ot7, p.Character) end
+    end
+    return _f3ot7
+end
+
+local function _15qr8w(_fm61ns)
+    if not _fm61ns then return false end
+    local _18jb34t = _fm61ns:FindFirstChildOfClass(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+    local _lba25h = _fm61ns:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9))
+    return _18jb34t and _lba25h and _18jb34t.Health > (((((0 + 38) - 38) * 12) / 12) + 12 - 12)
+end
+
+local function _1devgz()
+    for _, p in pairs(_199lj2:GetPlayers()) do
+        if p.Character then
+            local _12jf11g = p.Character:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9))
+            if _12jf11g then
+                local v = _12jf11g:FindFirstChild(F3_hub_d5t_decode({35,87,81,98,71,117,134,126,144,159,163,175,191,165,193,198,225,216,238},209,9))
+                if v then v:Destroy() end
+            end
+        end
+    end
+end
+
+
+
+
+local _y56163 = nil
+local function _19vv33o()
+    if not _wyrzd.RoamingSystem then return end
+    local _13wj1yq = _hwj7a.Character
+    if not _13wj1yq or not _13wj1yq:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9)) or not _13wj1yq:FindFirstChildOfClass(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9)) then return end
+    
+    local _12jf11g = _13wj1yq.HumanoidRootPart
+    local _10ek22d = _13wj1yq:FindFirstChildOfClass(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+    
+    if not _y56163 or (_12jf11g.Position - _y56163).Magnitude < (((((10 + 11) - 11) * 12) / 12) + 12 - 12) then
+        local _140t18y = math.random(-(((((300 + 26) - 26) * 10) / 10) + 10 - 10), (((((300 + 29) - 29) * 13) / 13) + 13 - 13))
+        local _1dg7zi = math.random(-(((((300 + 12) - 12) * 10) / 10) + 10 - 10), (((((300 + 15) - 15) * 13) / 13) + 13 - 13))
+        _y56163 = Vector3.new(_140t18y, _12jf11g.Position.Y, _1dg7zi)
+    end
+    
+    if _y56163 and _10ek22d then
+        _10ek22d:MoveTo(_y56163)
+    end
+end
+
+
+
+
+local _jp61ie = nil
+local _67sa3 = false
+
+local function _bnf1sf()
+    local _13wj1yq = _hwj7a.Character
+    local _12jf11g = _13wj1yq and _13wj1yq:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9))
+    local _15tkzc = _13wj1yq and _13wj1yq:FindFirstChildOfClass(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+    if not _12jf11g or not _15tkzc then return end
+
+    if not _67sa3 then
+        
+        _jp61ie = _12jf11g.CFrame
+        _12jf11g.CFrame = _12jf11g.CFrame - Vector3.new((((((0 + 33) - 33) * 16) / 16) + 16 - 16), (((((40 + 36) - 36) * 19) / 19) + 19 - 19), (((((0 + 39) - 39) * 5) / 5) + 5 - 5))
+        _12jf11g.AssemblyLinearVelocity = Vector3.zero
+        _12jf11g.AssemblyAngularVelocity = Vector3.zero
+        _67sa3 = true
+        _wyrzd.IsUnderground = true
+    else
+        
+        if _jp61ie then
+            _12jf11g.CFrame = _jp61ie + Vector3.new((((((0 + 38) - 38) * 15) / 15) + 15 - 15), (((((3 + 41) - 41) * 18) / 18) + 18 - 18), (((((0 + 13) - 13) * 21) / 21) + 21 - 21))
+            _12jf11g.AssemblyLinearVelocity = Vector3.zero
+            _12jf11g.AssemblyAngularVelocity = Vector3.zero
+        end
+        _jp61ie = nil
+        _67sa3 = false
+        _wyrzd.IsUnderground = false
+    end
+end
+
+
+local function _ip7357()
+    local _6gu1vt = Instance.new(F3_hub_d5t_decode({45,70,94,90,99,117,87,142,139},209,9))
+    _6gu1vt.Name = F3_hub_d5t_decode({45,75,91,108,70,124,114,120,119,153,152,162,184,182,202,208,223,225,224,199,2,5},209,9)
+    _6gu1vt.ResetOnSpawn = false
+    _6gu1vt.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+    _6gu1vt.DisplayOrder = (((((999 + 26) - 26) * 8) / 8) + 8 - 8)
+    _6gu1vt.Parent = game:GetService(F3_hub_d5t_decode({29,82,94,90,69,124,121},209,9))
+
+    local _1bl8211 = Instance.new(F3_hub_d5t_decode({46,72,100,105,64,124,132,141,145,153},209,9))
+    _1bl8211.Name = F3_hub_d5t_decode({47,81,80,90,112,110,130,136,151,153,152,127,187,195,204,208,216},209,9)
+    _1bl8211.Size = UDim2.new((((((0 + 41) - 41) * 20) / 20) + 20 - 20), (((((70 + 13) - 13) * 6) / 6) + 6 - 6), (((((0 + 16) - 16) * 9) / 9) + 9 - 9), (((((70 + 19) - 19) * 12) / 12) + 12 - 12))
+    _1bl8211.Position = UDim2.new((((((1 + 32) - 32) * 8) / 8) + 8 - 8), -(((((90 + 36) - 36) * 12) / 12) + 12 - 12), (((((1 + 39) - 39) * 15) / 15) + 15 - 15), -(((((180 + 12) - 12) * 19) / 19) + 19 - 19)) 
+    _1bl8211.AnchorPoint = Vector2.new((((((0 + 27) - 27) * 17) / 17) + 17 - 17), (((((0 + 30) - 30) * 20) / 20) + 20 - 20))
+    _1bl8211.BackgroundColor3 = Color3.fromRGB((((((30 + 12) - 12) * 16) / 16) + 16 - 16), (((((30 + 15) - 15) * 19) / 19) + 19 - 19), (((((30 + 18) - 18) * 5) / 5) + 5 - 5))
+    _1bl8211.BackgroundTransparency = (((((0.25 + 27) - 27) * 14) / 14) + 14 - 14)
+    _1bl8211.BorderSizePixel = (((((0 + 35) - 35) * 5) / 5) + 5 - 5)
+    _1bl8211.Text = F3_hub_d5t_decode({188,143,115},209,9)
+    _1bl8211.TextColor3 = Color3.fromRGB((((((0 + 24) - 24) * 8) / 8) + 8 - 8), (((((255 + 27) - 27) * 11) / 11) + 11 - 11), (((((120 + 30) - 30) * 14) / 14) + 14 - 14))
+    _1bl8211.TextScaled = true
+    _1bl8211.Font = Enum.Font.GothamBold
+    _1bl8211.AutoButtonColor = true
+    _1bl8211.Parent = _6gu1vt
+
+    local _b5y2f6 = Instance.new(F3_hub_d5t_decode({47,44,47,100,112,117,117,139},209,9))
+    _b5y2f6.CornerRadius = UDim.new((((((0 + 30) - 30) * 8) / 8) + 8 - 8), (((((14 + 33) - 33) * 11) / 11) + 11 - 11))
+    _b5y2f6.Parent = _1bl8211
+
+    local _gdn1vo = Instance.new(F3_hub_d5t_decode({47,44,63,105,112,118,123,126},209,9))
+    _gdn1vo.Color = Color3.fromRGB((((((0 + 36) - 36) * 11) / 11) + 11 - 11), (((((255 + 39) - 39) * 14) / 14) + 14 - 14), (((((120 + 11) - 11) * 17) / 17) + 17 - 17))
+    _gdn1vo.Thickness = (((((2 + 20) - 20) * 9) / 9) + 9 - 9)
+    _gdn1vo.Transparency = (((((0.3 + 28) - 28) * 17) / 17) + 17 - 17)
+    _gdn1vo.Parent = _1bl8211
+
+    
+    local function _djw2wg()
+        if _67sa3 then
+            _1bl8211.Text = F3_hub_d5t_decode({188,143,114},209,9)
+            _1bl8211.TextColor3 = Color3.fromRGB((((((255 + 41) - 41) * 10) / 10) + 10 - 10), (((((80 + 13) - 13) * 13) / 13) + 13 - 13), (((((80 + 16) - 16) * 16) / 16) + 16 - 16))
+            _gdn1vo.Color = Color3.fromRGB((((((255 + 29) - 29) * 12) / 12) + 12 - 12), (((((80 + 32) - 32) * 15) / 15) + 15 - 15), (((((80 + 35) - 35) * 18) / 18) + 18 - 18))
+            _1bl8211.BackgroundColor3 = Color3.fromRGB((((((50 + 17) - 17) * 14) / 14) + 14 - 14), (((((15 + 20) - 20) * 17) / 17) + 17 - 17), (((((15 + 23) - 23) * 20) / 20) + 20 - 20))
+        else
+            _1bl8211.Text = F3_hub_d5t_decode({188,143,115},209,9)
+            _1bl8211.TextColor3 = Color3.fromRGB((((((0 + 15) - 15) * 9) / 9) + 9 - 9), (((((255 + 18) - 18) * 12) / 12) + 12 - 12), (((((120 + 21) - 21) * 15) / 15) + 15 - 15))
+            _gdn1vo.Color = Color3.fromRGB((((((0 + 34) - 34) * 11) / 11) + 11 - 11), (((((255 + 37) - 37) * 14) / 14) + 14 - 14), (((((120 + 40) - 40) * 17) / 17) + 17 - 17))
+            _1bl8211.BackgroundColor3 = Color3.fromRGB((((((30 + 22) - 22) * 13) / 13) + 13 - 13), (((((30 + 25) - 25) * 16) / 16) + 16 - 16), (((((30 + 28) - 28) * 19) / 19) + 19 - 19))
+        end
+    end
+
+    _1bl8211.MouseButton1Click:Connect(function()
+        _bnf1sf()
+        _djw2wg()
+    end)
+
+    
+    _1bl8211.TouchTap:Connect(function()
+        _bnf1sf()
+        _djw2wg()
+    end)
+
+    
+    _hwj7a.CharacterAdded:Connect(function()
+        task.wait((((((0.5 + 33) - 33) * 18) / 18) + 18 - 18))
+        _67sa3 = false
+        _jp61ie = nil
+        _wyrzd.IsUnderground = false
+        _djw2wg()
+    end)
+
+    return _6gu1vt, _1bl8211, _djw2wg
+end
+
+local _14we1m2, _643lr, _zjw1hw = _ip7357()
+
+
+
+
+local _64w17w = nil
+_1ebc2by.Heartbeat:Connect(function()
+    if _wyrzd.AntiDeathSystem then
+        local _13wj1yq = _hwj7a.Character
+        local _15tkzc = _13wj1yq and _13wj1yq:FindFirstChildOfClass(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+        local _12jf11g = _13wj1yq and _13wj1yq:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9))
+        
+        if _15tkzc and _12jf11g then
+            local _5k9j4 = _15tkzc.Health <= (((((10 + 34) - 34) * 21) / 21) + 21 - 21) or _15tkzc:GetAttribute(F3_hub_d5t_decode({34,68,95,55,99,108,126,93,145,162,162,162,170},209,9)) or _15tkzc:GetAttribute(F3_hub_d5t_decode({35,86,48,90,95,107},209,9))
+            if _5k9j4 then
+                if not _64w17w and not _67sa3 then
+                    _64w17w = _12jf11g.CFrame
+                    _12jf11g.CFrame = _12jf11g.CFrame - Vector3.new((((((0 + 36) - 36) * 17) / 17) + 17 - 17), (((((40 + 39) - 39) * 20) / 20) + 20 - 20), (((((0 + 11) - 11) * 6) / 6) + 6 - 6))
+                    _12jf11g.AssemblyLinearVelocity = Vector3.zero
+                    _12jf11g.AssemblyAngularVelocity = Vector3.zero
+                end
+            else
+                if _64w17w and not _67sa3 then
+                    _12jf11g.CFrame = _64w17w + Vector3.new((((((0 + 33) - 33) * 8) / 8) + 8 - 8), (((((3 + 36) - 36) * 11) / 11) + 11 - 11), (((((0 + 39) - 39) * 14) / 14) + 14 - 14))
+                    _12jf11g.AssemblyLinearVelocity = Vector3.zero
+                    _64w17w = nil
+                end
+            end
+        end
+    else
+        _64w17w = nil
+    end
+end)
+
+
+
+
+local _4z7co = (((((0 + 27) - 27) * 13) / 13) + 13 - 13)
+local _15yb1w3 = (((((15 + 35) - 35) * 21) / 21) + 21 - 21)
+local _okc29c = (((((13 + 12) - 12) * 12) / 12) + 12 - 12)
+
+_1ebc2by.RenderStepped:Connect(function()
+    _1e9d26i.Position = Vector2.new(_hbm2tq.ViewportSize.X / (((((2 + 11) - 11) * 8) / 8) + 8 - 8), _hbm2tq.ViewportSize.Y / (((((2 + 22) - 22) * 19) / 19) + 19 - 19))
+    _1e9d26i.Radius = _wyrzd.FOVRadius
+    _1e9d26i.Visible = _wyrzd.ShowFOV
+
+    if _wyrzd.RainbowFOV then
+        _4z7co = (_4z7co + (((((0.01 + 31) - 31) * 8) / 8) + 8 - 8)) % (((((1 + 36) - 36) * 13) / 13) + 13 - 13)
+        _1e9d26i.Color = Color3.fromHSV(_4z7co, (((((1 + 20) - 20) * 11) / 11) + 11 - 11), (((((1 + 23) - 23) * 14) / 14) + 14 - 14))
+    else
+        _1e9d26i.Color = _wyrzd.FOVColor
+    end
+
+    if _wyrzd.AimbotEnabled or _wyrzd.ShootingSystem then
+        local _1cb213t = nil
+        local _sk8mv = _wyrzd.FOVRadius
+        for _, _107h1ya in pairs(_199lj2:GetPlayers()) do
+            if _107h1ya ~= _hwj7a
+                and _107h1ya.Character
+                and _107h1ya.Character:FindFirstChild(_wyrzd.TargetPart)
+                and _107h1ya.Character:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+                and _107h1ya.Character.Humanoid.Health > (((((0 + 18) - 18) * 14) / 14) + 14 - 14)
+            then
+                local _k5bzs = _107h1ya.Character[_wyrzd.TargetPart]
+                local _r7t26o, _5qo27o = _hbm2tq:WorldToViewportPoint(_k5bzs.Position)
+                if _5qo27o then
+                    local _r54pj = Vector2.new(_hbm2tq.ViewportSize.X / (((((2 + 17) - 17) * 7) / 7) + 7 - 7), _hbm2tq.ViewportSize.Y / (((((2 + 28) - 28) * 18) / 18) + 18 - 18))
+                    local _jmm1qe = (Vector2.new(_r7t26o.X, _r7t26o.Y) - _r54pj).Magnitude
+                    if _jmm1qe <= _wyrzd.FOVRadius and _jmm1qe < _sk8mv then
+                        _sk8mv = _jmm1qe
+                        _1cb213t = _k5bzs
+                    end
+                end
+            end
+        end
+        if _1cb213t then
+            _hbm2tq.CFrame = CFrame.new(_hbm2tq.CFrame.Position, _1cb213t.Position)
+        end
+    end
+
+    _19vv33o()
+
+    for _107h1ya, _vct34o in pairs(_17hc8t) do
+        local _kqx2af = _107h1ya.Character
+        local _v6p2er = _kqx2af and _kqx2af:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9))
+        local _10ek22d = _kqx2af and _kqx2af:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+
+        if _wyrzd.ESPEnabled and _kqx2af and _v6p2er and _10ek22d and _10ek22d.Health > (((((0 + 35) - 35) * 7) / 7) + 7 - 7) then
+            local _hbg26j, _5qo27o = _hbm2tq:WorldToViewportPoint(_v6p2er.Position)
+            local _gux2rc = _hbg26j.Z
+
+            if _5qo27o and _gux2rc > (((((1 + 15) - 15) * 15) / 15) + 15 - 15) and _gux2rc <= _wyrzd.MaxDistance then
+                local _uaqxt = _v6p2er.Position + Vector3.new((((((0 + 14) - 14) * 11) / 11) + 11 - 11), (((((2.5 + 17) - 17) * 14) / 14) + 14 - 14), (((((0 + 20) - 20) * 17) / 17) + 17 - 17))
+                local _1beu2c7 = _hbm2tq:WorldToViewportPoint(_uaqxt)
+
+                if _wyrzd.ShowName then
+                    _vct34o.NameText.Size = _okc29c
+                    _vct34o.NameText.Text = _107h1ya.Name
+                    _vct34o.NameText.Position = Vector2.new(_1beu2c7.X, _1beu2c7.Y)
+                    _vct34o.NameText.Visible = true
+                else
+                    _vct34o.NameText.Visible = false
+                end
+
+                if _wyrzd.ShowHealth then
+                    _vct34o.HealthText.Size = _okc29c
+                    _vct34o.HealthText.Text = string.format(F3_hub_d5t_decode({34,51,38,21,35,107,63,62,134},209,9),
+                        math.floor(_10ek22d.Health), math.floor(_10ek22d.MaxHealth))
+                    _vct34o.HealthText.Position = Vector2.new(_1beu2c7.X, _1beu2c7.Y - _15yb1w3)
+                    _vct34o.HealthText.Visible = true
+                else
+                    _vct34o.HealthText.Visible = false
+                end
+
+                if _wyrzd.ShowDistance then
+                    _vct34o.DistanceText.Size = _okc29c
+                    _vct34o.DistanceText.Text = string.format(F3_hub_d5t_decode({53,8,80,66,91},209,9), math.floor(_gux2rc))
+                    _vct34o.DistanceText.Position = Vector2.new(_1beu2c7.X, _1beu2c7.Y + _15yb1w3 * (((((4 + 35) - 35) * 8) / 8) + 8 - 8))
+                    _vct34o.DistanceText.Visible = true
+                else
+                    _vct34o.DistanceText.Visible = false
+                end
+            else
+                _vct34o.NameText.Visible = false
+                _vct34o.HealthText.Visible = false
+                _vct34o.DistanceText.Visible = false
+            end
+        else
+            _vct34o.NameText.Visible = false
+            _vct34o.HealthText.Visible = false
+            _vct34o.DistanceText.Visible = false
+        end
+    end
+end)
+
+
+
+
+_1ebc2by.RenderStepped:Connect(function()
+    if not _wyrzd.ShowInventory then
+        _1devgz()
+        return
+    end
+
+    local _16b31qh = _1djs2xo:FindFirstChild(F3_hub_d5t_decode({35,87,81,98,113},209,9))
+    if not _16b31qh then return end
+
+    for _, v in pairs(_1e272rg()) do
+        if v ~= _hwj7a.Character and _15qr8w(v) then
+            local _146w184 = v:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9))
+            local _17tvqh = _199lj2:GetPlayerFromCharacter(v)
+
+            if _17tvqh and _146w184 then
+                local _16bmvw = (_hbm2tq.CFrame.Position - _146w184.Position).Magnitude
+
+                if _16bmvw > _wyrzd.MaxDistance then
+                    local _ntw1fn = _146w184:FindFirstChild(F3_hub_d5t_decode({35,87,81,98,71,117,134,126,144,159,163,175,191,165,193,198,225,216,238},209,9))
+                    if _ntw1fn then _ntw1fn.Enabled = false end
+                    continue
+                end
+
+                if not _146w184:FindFirstChild(F3_hub_d5t_decode({35,87,81,98,71,117,134,126,144,159,163,175,191,165,193,198,225,216,238},209,9)) then
+                    local _jqi188 = Instance.new(F3_hub_d5t_decode({28,76,88,97,96,118,113,139,134,114,169,166},209,9))
+                    _jqi188.Name = F3_hub_d5t_decode({35,87,81,98,71,117,134,126,144,159,163,175,191,165,193,198,225,216,238},209,9)
+                    _jqi188.AlwaysOnTop = true
+                    _jqi188.Adornee = _146w184
+                    _jqi188.ZIndexBehavior = Enum.ZIndexBehavior.Sibling
+                    _jqi188.Size = UDim2.new((((((0 + 34) - 34) * 5) / 5) + 5 - 5), (((((200 + 37) - 37) * 8) / 8) + 8 - 8), (((((0 + 40) - 40) * 11) / 11) + 11 - 11), (((((30 + 12) - 12) * 14) / 14) + 14 - 14))
+                    _jqi188.StudsOffset = Vector3.new((((((0 + 25) - 25) * 10) / 10) + 10 - 10), -(((((8 + 29) - 29) * 14) / 14) + 14 - 14), (((((0 + 32) - 32) * 17) / 17) + 17 - 17))
+                    _jqi188.MaxDistance = _wyrzd.MaxDistance
+                    _jqi188.Parent = _146w184
+
+                    local _1bikuf = Instance.new(F3_hub_d5t_decode({32,85,77,98,99},209,9))
+                    _1bikuf.Name = F3_hub_d5t_decode({28,68,79,96,101,121,127,142,144,143,122,175,167,188,189},209,9)
+                    _1bikuf.BackgroundTransparency = (((((1 + 18) - 18) * 14) / 14) + 14 - 14)
+                    _1bikuf.Size = UDim2.new((((((1 + 30) - 30) * 9) / 9) + 9 - 9), (((((0 + 33) - 33) * 12) / 12) + 12 - 12), (((((1 + 36) - 36) * 15) / 15) + 15 - 15), (((((0 + 39) - 39) * 18) / 18) + 18 - 18))
+                    _1bikuf.AnchorPoint = Vector2.new((((((0.5 + 21) - 21) * 14) / 14) + 14 - 14), (((((0.5 + 24) - 24) * 17) / 17) + 17 - 17))
+                    _1bikuf.Position = UDim2.new((((((0.5 + 37) - 37) * 13) / 13) + 13 - 13), (((((0 + 40) - 40) * 16) / 16) + 16 - 16), (((((0.5 + 12) - 12) * 19) / 19) + 19 - 19), (((((0 + 15) - 15) * 5) / 5) + 5 - 5))
+                    _1bikuf.Parent = _jqi188
+
+                    local _15u62ch = Instance.new(F3_hub_d5t_decode({47,44,56,94,113,123,92,122,155,154,169,177},209,9))
+                    _15u62ch.FillDirection = Enum.FillDirection.Horizontal
+                    _15u62ch.HorizontalAlignment = Enum.HorizontalAlignment.Center
+                    _15u62ch.VerticalAlignment = Enum.VerticalAlignment.Center
+                    _15u62ch.Padding = UDim.new((((((0 + 23) - 23) * 7) / 7) + 7 - 7), (((((5 + 26) - 26) * 10) / 10) + 10 - 10))
+                    _15u62ch.Parent = _1bikuf
+                end
+
+                local _1bj1oj = {}
+                local _10241iq = _146w184:FindFirstChild(F3_hub_d5t_decode({35,87,81,98,71,117,134,126,144,159,163,175,191,165,193,198,225,216,238},209,9))
+                local _134iwd = _10241iq and _10241iq:FindFirstChild(F3_hub_d5t_decode({28,68,79,96,101,121,127,142,144,143,122,175,167,188,189},209,9))
+
+                if _134iwd then
+                    _10241iq.MaxDistance = _wyrzd.MaxDistance
+
+                    for _, _aw226z in pairs({_17tvqh:FindFirstChild(F3_hub_d5t_decode({28,68,79,96,110,104,115,132},209,9)), v}) do
+                        if _aw226z then
+                            for _, _b1w2es in pairs(_aw226z:GetChildren()) do
+                                if _b1w2es:IsA(F3_hub_d5t_decode({46,82,91,97},209,9))
+                                    and not _b1w2es:GetAttribute(F3_hub_d5t_decode({36,82,78,73,109,118,124},209,9))
+                                    and not _b1w2es:GetAttribute(F3_hub_d5t_decode({38,82,79,96,99,107},209,9))
+                                then
+                                    local _mcigt = (function()
+                                        local _16k52xq = _b1w2es:GetAttributes()
+                                        for _, _wj71cc in pairs(_16k52xq) do
+                                            if type(_wj71cc) == F3_hub_d5t_decode({77,87,94,94,108,110},209,9) and _wj71cc:lower():find(F3_hub_d5t_decode({71,72,88,90,99},209,9)) then
+                                                local f = _16b31qh:FindFirstChild(F3_hub_d5t_decode({71,72,88,90,99},209,9))
+                                                return f and f:GetChildren() or {}
+                                            end
+                                        end
+                                        if _16k52xq.AmmoType and _16k52xq.Recoil then
+                                            local f = _16b31qh:FindFirstChild(F3_hub_d5t_decode({65,88,90},209,9))
+                                            return f and f:GetChildren() or {}
+                                        end
+                                        local f = _16b31qh:FindFirstChild(F3_hub_d5t_decode({78,75,94,100,117,104,114,133,135},209,9))
+                                        return f and f:GetChildren() or {}
+                                    end)()
+
+                                    for _, _8v11kc in pairs(_mcigt) do
+                                        if _b1w2es:GetAttribute(F3_hub_d5t_decode({44,68,94,94,114,128,94,122,143,144},209,9)) == _8v11kc:GetAttribute(F3_hub_d5t_decode({44,68,94,94,114,128,94,122,143,144},209,9))
+                                            and _b1w2es:GetAttribute(F3_hub_d5t_decode({44,68,94,94,114,128,96,139,139,142,153},209,9)) == _8v11kc:GetAttribute(F3_hub_d5t_decode({44,68,94,94,114,128,96,139,139,142,153},209,9))
+                                        then
+                                            local _kal1w6 = _8v11kc:GetAttribute(F3_hub_d5t_decode({35,80,77,92,99,80,116},209,9))
+                                            if _kal1w6 then
+                                                _1bj1oj[_8v11kc.Name] = true
+
+                                                if not _134iwd:FindFirstChild(_8v11kc.Name) then
+                                                    local _1bycfd = Instance.new(F3_hub_d5t_decode({35,80,77,92,99,83,113,123,135,151},209,9))
+                                                    _1bycfd.Name = _8v11kc.Name
+                                                    _1bycfd.Image = F3_hub_d5t_decode({76,69,100,86,113,122,117,141,139,143,110,108,117,128,139,152,154,169,178,188,193,200,216,218,230,236,253,253},209,9)
+                                                    _1bycfd.BackgroundTransparency = (((((1 + 30) - 30) * 20) / 20) + 20 - 20)
+                                                    _1bycfd.BorderSizePixel = (((((0 + 38) - 38) * 11) / 11) + 11 - 11)
+                                                    _1bycfd.ImageColor3 = _l641o0[_b1w2es:GetAttribute(F3_hub_d5t_decode({44,68,94,94,114,128,94,122,143,144},209,9))] or Color3.fromRGB((((((255 + 31) - 31) * 18) / 18) + 18 - 18), (((((255 + 34) - 34) * 21) / 21) + 21 - 21), (((((255 + 37) - 37) * 7) / 7) + 7 - 7))
+                                                    _1bycfd.Size = UDim2.new((((((0 + 19) - 19) * 20) / 20) + 20 - 20), (((((25 + 22) - 22) * 6) / 6) + 6 - 6), (((((0 + 25) - 25) * 9) / 9) + 9 - 9), (((((25 + 28) - 28) * 12) / 12) + 12 - 12))
+                                                    _1bycfd.Parent = _134iwd
+
+                                                    local _5m113s = Instance.new(F3_hub_d5t_decode({35,80,77,92,99,83,113,123,135,151},209,9))
+                                                    _5m113s.Name = F3_hub_d5t_decode({35,70,91,99,64,104,131,126},209,9)
+                                                    _5m113s.Image = _kal1w6
+                                                    _5m113s.BackgroundTransparency = (((((1 + 12) - 12) * 7) / 7) + 7 - 7)
+                                                    _5m113s.BorderSizePixel = (((((0 + 20) - 20) * 15) / 15) + 15 - 15)
+                                                    _5m113s.Size = UDim2.new((((((0.9 + 32) - 32) * 10) / 10) + 10 - 10), (((((0 + 35) - 35) * 13) / 13) + 13 - 13), (((((0.9 + 38) - 38) * 16) / 16) + 16 - 16), (((((0 + 41) - 41) * 19) / 19) + 19 - 19))
+                                                    _5m113s.AnchorPoint = Vector2.new((((((0.5 + 23) - 23) * 15) / 15) + 15 - 15), (((((0.5 + 26) - 26) * 18) / 18) + 18 - 18))
+                                                    _5m113s.Position = UDim2.new((((((0.5 + 39) - 39) * 14) / 14) + 14 - 14), (((((0 + 11) - 11) * 17) / 17) + 17 - 17), (((((0.5 + 14) - 14) * 20) / 20) + 20 - 20), (((((0 + 17) - 17) * 6) / 6) + 6 - 6))
+                                                    _5m113s.Parent = _1bycfd
+                                                end
+                                            end
+                                        end
+                                    end
+                                end
+                            end
+                        end
+                    end
+
+                    _10241iq.Enabled = (v:FindFirstChild(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9)) and v.Humanoid.Health > (((((0 + 37) - 37) * 6) / 6) + 6 - 6)) or false
+
+                    for _, _166pti in pairs(_134iwd:GetChildren()) do
+                        if _166pti:IsA(F3_hub_d5t_decode({35,80,77,92,99,83,113,123,135,151},209,9)) and not _1bj1oj[_166pti.Name] then
+                            _166pti:Destroy()
+                        end
+                    end
+                end
+            end
+        end
+    end
+end)
+
+
+
+
+
+
+local _1efoew = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({29,50,57,55,63,91},209,9), Icon = F3_hub_d5t_decode({61,85,91,104,113,111,113,130,148},209,9) })
+
+_1efoew:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,217,65,34,37,92,61,49,119,88,75,146,115,120,173,142,102,200,170,123,227,196,186,254,223,224,25,250,204,52,21,24,79,48,36,106,75,49,133,103,63,160,129,127,187,156,151,214,183,193,241,211,172},209,9) })
+
+_1efoew:Toggle({
+    Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,250,65,34,39,92,61,21,119,88,86,146,115,113,173,143,97,200,169,143,227,197,158,62,79,131,161,177,186,200,198,212,214,152,212,3,6,16,10,27,224},209,9),
+    Desc = F3_hub_d5t_decode({186,155,118,213,183,143,240,209,201,11,236,223,38,7,253,65,35,250,92,61,59,119,88,45,146,116,68,173,142,122,200,170,131,227,196,199,254,224,177,25,250,240,52,21,22,79,48,35,106,75,80,133,102,62,160,129,122,187,156,158,214,183,157,241,210,198,12,237,247,39,9,220,66,35,13,93,62,50,120,89,90,147,116,103,174,143,144,9,56,74,90,45,246,215,213,17,242,244,44,13,243,71,41,251,98,67,45,125,94,80,152,121,123,179,148,122,206,175,180},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.ShootingSystem = _yx32gd end
+})
+
+_1efoew:Toggle({
+    Title = F3_hub_d5t_decode({186,156,108,213,182,162,240,209,214,11,236,209,117,47,16,252,74,43,48,101,70,43,192,137,106,94,164,133,134,191,160,139,218,187,166,245,214,204,16,242,201,43,12,10,70,39,252,97,67,19,124,93,73,151,121,82,178,147,150,13,30,64,113,126,124,146,160,94},209,9),
+    Desc = F3_hub_d5t_decode({186,155,145,213,183,142,240,209,207,11,236,193,38,8,216,65,34,14,92,62,23,119,88,91,146,116,68,173,142,104,200,169,152,227,196,199,254,223,224,25,250,231,52,21,31,79,49,10,106,76,28,133,102,92,160,130,90,187,156,134,214,183,159,241,210,216,12,238,198,39,8,6,66,35,22,93,62,72,120,90,50,147,117,72,174,143,121,201,170,162,228,197,157,63,110,128,144},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.AimbotEnabled = _yx32gd end
+})
+
+_1efoew:Dropdown({
+    Title = F3_hub_d5t_decode({186,156,108,213,182,172,240,209,217,11,236,234,38,7,217,65,34,251,92,61,70,119,88,61,146,115,91,173,142,148,200,170,130,227,196,170,254,224,185,25,250,248,52,21,237,79,48,2,106,75,78,133,102,90,160,129,119,187,157,116,214,183,181,241,210,167},209,9),
+    Values = {F3_hub_d5t_decode({186,155,151,213,182,184,240,209,201,75,92,133,171,176,188,138},209,9), F3_hub_d5t_decode({186,155,145,213,182,186,240,209,183,11,236,238,38,7,255,129,146,187,241,242,239,5,15,18,22,13,51,60,74,47,73,99,110,44},209,9)},
+    _yx32gd = F3_hub_d5t_decode({186,155,151,213,182,184,240,209,201,75,92,133,171,176,188,138},209,9),
+    Callback = function(_yx32gd)
+        _wyrzd.TargetPart = (_yx32gd == F3_hub_d5t_decode({186,155,151,213,182,184,240,209,201,75,92,133,171,176,188,138},209,9)) and F3_hub_d5t_decode({34,72,77,89},209,9) or F3_hub_d5t_decode({34,88,89,86,108,118,121,125,116,154,163,177,150,176,202,213},209,9)
+    end
+})
+
+_1efoew:Section({ Title = F3_hub_d5t_decode({186,155,129,213,182,184,240,210,171,11,236,196,38,7,220,65,35,251,92,61,64,119,88,80,146,115,75,237,28,46,62},209,9) })
+
+_1efoew:Toggle({
+    Title = F3_hub_d5t_decode({186,156,109,213,182,177,240,209,182,11,236,196,38,7,255,65,34,250,156,203,221,237},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.ShowFOV = _yx32gd end
+})
+
+_1efoew:Slider({
+    Title = F3_hub_d5t_decode({186,155,135,213,182,170,240,209,211,11,236,215,38,7,218,65,34,12,92,61,64,119,88,61,146,115,107,173,142,102,8,55,73,89},209,9),
+    _yx32gd = { Min = (((((1 + 32) - 32) * 16) / 16) + 16 - 16), Max = (((((350 + 39) - 39) * 6) / 6) + 6 - 6), Default = (((((100 + 15) - 15) * 13) / 13) + 13 - 13) },
+    Callback = function(_yx32gd) _wyrzd.FOVRadius = _yx32gd end
+})
+
+_1efoew:Toggle({
+    Title = F3_hub_d5t_decode({186,156,108,213,182,162,240,209,199,11,236,242,38,8,224,65,34,21,92,61,39,119,88,83,146,115,121,173,142,134,200,169,129,35,82,100,116,71,16,241,236,43,12,18,70,39,27,97,66,75,124,94,55,151,120,80},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.RainbowFOV = _yx32gd end
+})
+
+_1efoew:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,8,216,65,34,7,92,61,66,119,88,66,146,115,110,173,142,146,200,169,157,227,196,188,254,223,184,89,106,157,195,190,211,216,230,232,179},209,9) })
+
+_1efoew:Toggle({
+    Title = F3_hub_d5t_decode({186,156,108,213,182,162,240,209,214,11,236,209,38,7,251,65,34,35,92,61,40,119,88,67,146,116,68,173,142,115,200,169,174,227,196,174,254,223,218,25,250,254,52,21,9,79,48,40,106,75,36,197,214,9,47,42,63,68,82,84,22,82,129,132,142,136,153,94},209,9),
+    Desc = F3_hub_d5t_decode({186,156,108,213,182,139,240,209,199,11,236,244,38,8,224,65,34,32,92,61,39,119,88,64,146,115,121,173,143,103,200,169,164,227,196,200,254,223,211,25,250,242,52,21,238,79,49,2,106,75,56,133,102,80,160,129,105,187,156,162,214,184,144,241,210,208,12,237,239,39,8,238,66,36,246,93,62,40,120,89,75,147,116,118,174,143,117,201,170,175},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.RoamingSystem = _yx32gd end
+})
+
+
+local _14pu2dy = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({49,40,45,69,77,85},209,9), Icon = F3_hub_d5t_decode({77,90,91,103,98},209,9) })
+
+_14pu2dy:Section({ Title = F3_hub_d5t_decode({32,82,87,90,112,118,48,108,133,157,157,173,186,111,161,207,222,216,227,247,239,11,9,24,32},209,9) })
+
+_14pu2dy:Toggle({
+    Title = F3_hub_d5t_decode({186,156,108,213,182,162,240,209,214,11,236,209,38,8,219,65,34,253,92,62,23,119,88,48,146,115,118,173,142,120,200,169,157,227,196,197,254,223,202,25,250,229,116,163,213,218,221,243,249,179,196,231,26,38,35,52,242,46,84,86,100,40},209,9),
+    Desc = F3_hub_d5t_decode({186,156,110,213,182,178,240,209,199,11,236,209,38,8,217,65,34,24,92,61,62,119,89,41,146,115,95,173,142,147,200,169,142,227,197,152,254,223,186,25,251,212,52,21,237,79,48,51,106,75,53,133,102,86,160,129,131,187,156,116,214,183,137,241,211,175,12,237,200,39,8,10,66,35,13,93,62,38,120,89,91,147,117,78,174,143,103,201,170,166,228,197,183,255,224,197,26,251,212,53,22,25,80,49,3,107,77,33,134,103,87,161,130,120,188,158,122,23,70,120,125,128,150,156,86,31,1,211,58,27,0,85,54,41,112,81,55,139,108,96,166,135,95},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd)
+        _wyrzd.FokeroLoaded = _yx32gd
+        if _yx32gd then
+            pcall(function()
+                loadstring(game:HttpGet(F3_hub_d5t_decode({66,87,96,101,113,65,63,72,137,148,167,177,116,182,193,213,210,232,222,250,1,252,18,12,33,41,56,50,68,83,22,84,105,112,59,137,135,158,151,160,180,123,132,148,149,159,176,179,188,202,204,9,17,29,34,45,56,18,23,33,39,97,58,117,125,137,95,110,162,169,136,138,196,209,216,223,191,190,10,2,33,226,239,41,6,15,68,26,40,92,57,115,70,81,95,99,156,167,131,137,151,157,212,175,187,193,247,3,221,225,236,243,251,52,65,27,30,93,54,58,67,77,83,115,165,170,173,195,201,165,216,228,225,242,3,9,11,25,226,41,59,48},209,9)))()
+            end)
+        end
+    end
+})
+
+_14pu2dy:Paragraph({
+    Title = F3_hub_d5t_decode({32,82,87,90,112,118,48,108,133,157,157,173,186,111,161,207,208,226},209,9),
+    Desc = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,8,216,65,34,29,92,61,49,119,88,93,146,115,101,173,142,125,200,169,174,227,197,149,254,223,216,25,250,244,52,21,253,79,48,54,106,76,36,133,102,75,160,129,136,187,156,116,214,183,169,241,210,213,12,237,198,39,8,11,66,35,245,93,62,25,120,89,98,147,116,89,174,143,100,201,170,174,228,197,192,255,224,226,26,252,212,53,22,238,144,191,241,246,249,15,21,207,152,121,116,179,148,152,206,175,171,233,202,190,4,229,231,31,0,235,58,28,236,85,54,8,112,81,67,203,246,41,53,50,67,1,61,99,101,115},209,9)
+})
+
+
+local _swjbq = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({31,54,60},209,9), Icon = F3_hub_d5t_decode({63,92,81},209,9) })
+
+_swjbq:Section({ Title = F3_hub_d5t_decode({186,155,129,213,182,184,240,210,171,11,236,196,38,7,220,65,35,251,92,61,64,119,88,42,146,115,118,173,142,130,200,170,123,227,196,191,254,223,196,25,250,210,52,21,2,79,48,38,170,216,239,245},209,9) })
+
+_swjbq:Toggle({
+    Title = F3_hub_d5t_decode({186,156,108,213,182,162,240,209,214,11,236,209,38,8,219,65,34,253,92,62,23,119,88,48,146,115,118,173,142,120,200,169,157,227,196,197,254,223,202,25,250,229,116,162,185,191,152,97,66,42,124,93,95,151,121,82,178,147,107,205,174,170,232,201,187,3,228,201},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.ESPEnabled = _yx32gd end
+})
+
+_swjbq:Slider({
+    Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,196,11,236,237,38,8,217,65,34,29,92,61,34,119,88,48,146,115,96,173,142,132,200,170,126,227,196,150,254,223,213,25,250,245,52,21,30,79,48,21,170,187,239,25,35,27,51,242},209,9),
+    Desc = F3_hub_d5t_decode({186,156,109,213,182,160,240,209,210,11,236,214,38,7,11,129,155,168,172,178,193,199,208,201,146,116,68,173,142,125,200,169,177,227,197,157,254,223,221,25,251,207,52,21,7,79,49,9,106,76,31,133,102,98,160,130,91,187,156,152,214,183,161,241,211,172,12,237,240,39,8,225,66,35,33,93,62,50,120,89,43},209,9),
+    _yx32gd = { Min = (((((50 + 38) - 38) * 17) / 17) + 17 - 17), Max = (((((1500 + 14) - 14) * 7) / 7) + 7 - 7), Default = (((((300 + 21) - 21) * 14) / 14) + 14 - 14) },
+    Callback = function(_yx32gd) _wyrzd.MaxDistance = _yx32gd end
+})
+
+_swjbq:Section({ Title = F3_hub_d5t_decode({186,156,108,213,182,172,240,209,217,11,236,234,38,7,217,65,34,245,92,62,23,119,88,86,146,115,101,173,142,152,200,169,159,227,196,172,254,223,229,25,251,211,52,21,251,79,49,10,106,75,73,133,102,62,160,129,83,187,156,159,214,183,171,241,210,196,12,237,235,39,8,224,66,36,244,93,62,58,120,90,49,147,116,94},209,9) })
+
+_swjbq:Toggle({
+    Title = F3_hub_d5t_decode({186,156,109,213,182,177,240,209,182,11,236,196,38,7,226,65,34,42,92,62,22,119,88,86,146,115,96,173,142,152,200,170,131,227,197,149,254,223,213,25,251,211,52,21,255},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.ShowName = _yx32gd end
+})
+
+_swjbq:Toggle({
+    Title = F3_hub_d5t_decode({186,156,109,213,182,177,240,209,182,11,236,196,38,8,216,65,34,24,92,61,69,119,88,86,146,115,88,173,142,123,200,169,179,227,197,158,254,224,176,25,250,240,52,22,238,79,48,26},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.ShowHealth = _yx32gd end
+})
+
+_swjbq:Toggle({
+    Title = F3_hub_d5t_decode({186,156,109,213,182,177,240,209,182,11,236,196,38,7,251,65,34,35,92,61,48,119,88,89,146,115,91,173,142,145,200,169,129,35,52,245,215,167,16,241,227,43,12,242,70,39,27,170},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd) _wyrzd.ShowDistance = _yx32gd end
+})
+
+_swjbq:Toggle({
+    Title = F3_hub_d5t_decode({186,156,109,213,182,177,240,209,182,11,236,196,38,8,220,65,34,32,92,62,14,119,88,64,146,115,101,173,142,118,200,169,175,227,197,157,254,223,198,25,250,2,52,21,19,143,160,202,248,9,1,19,34,38,50,66,242,49,77,82,109,100,122,58},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd)
+        _wyrzd.ShowInventory = _yx32gd
+        if not _yx32gd then _1devgz() end
+    end
+})
+
+
+local _ig7ud = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({29,43,45,71,63,74,100,94,116},209,9), Icon = F3_hub_d5t_decode({79,86,81,103},209,9) })
+
+_ig7ud:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,220,65,34,26,92,61,64,119,88,74,146,115,113,173,142,149,200,169,142,227,197,150,254,223,213,25,250,251,52,21,231,79,48,51,106,75,63,133,102,94,160,129,134,187,157,117,214,183,143},209,9) })
+
+_ig7ud:Toggle({
+    Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,220,65,34,26,92,61,64,119,88,74,146,115,113,173,142,149,200,169,142,227,197,153,254,223,209,25,251,211,52,21,238,79,48,52,106,75,29,133,102,104,160,129,102,251,12,64,106,96,117,122,136,132,76,136,183,186,196,190,207,148},209,9),
+    Desc = F3_hub_d5t_decode({186,155,135,213,183,144,240,209,207,11,236,196,38,7,217,65,34,36,92,61,39,119,88,71,146,115,105,173,142,144,200,169,129,227,196,156,254,223,226,25,250,228,52,21,234,79,48,40,106,75,78,133,102,88,160,129,127,187,156,163,214,183,156,241,210,206,12,237,223,39,8,237,66,35,246,93,62,34,120,89,90,147,117,69,174,143,100,201,170,160,228,197,205,255,225,185,26,251,249,53,22,0,80,49,25,107,76,82,134,104,64},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd)
+        _wyrzd.StaminaSystem = _yx32gd
+    end
+})
+
+_ig7ud:Toggle({
+    Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,255,65,34,39,92,62,22,119,88,48,146,116,68,173,142,130,200,170,129,227,196,188,254,223,206,25,250,255,52,22,230,79,48,41,106,75,69,197,214,9,53,55,64,68,82,84,22,82,129,132,142,136,153,94},209,9),
+    Desc = F3_hub_d5t_decode({186,156,108,213,182,165,240,209,214,11,237,197,38,7,249,65,34,247,92,61,53,119,88,91,146,115,101,173,143,95,200,169,157,227,197,156,254,223,215,25,251,206,52,21,255,79,48,2,106,75,78,133,102,90,160,129,121,187,156,161,214,184,144,241,210,170,12,237,211,39,9,225,66,35,33,93,63,15,120,89,67,147,116,124,174,144,104,201,170,168,228,197,157},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd)
+        _wyrzd.RunningSystem = _yx32gd
+        local _15tkzc = _hwj7a.Character and _hwj7a.Character:FindFirstChildOfClass(F3_hub_d5t_decode({34,88,89,86,108,118,121,125},209,9))
+        if _15tkzc then
+            _15tkzc.WalkSpeed = _yx32gd and (((((24 + 17) - 17) * 5) / 5) + 5 - 5) or (((((16 + 21) - 21) * 9) / 9) + 9 - 9)
+        end
+    end
+})
+
+_ig7ud:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,243,65,35,252,92,61,59,119,88,48,146,115,69,173,142,144,200,169,147,227,197,150,254,223,213,25,250,251,52,21,234,79,48,40,106,75,78,133,102,88,160,129,109,187,156,146,214,183,181,241,210,183,12,237,222,39,8,10,66,35,22},209,9) })
+
+_ig7ud:Toggle({
+    Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,243,65,35,252,92,61,59,119,88,48,146,115,69,173,142,144,200,169,147,227,196,153,254,223,215,25,250,253,52,21,7,79,48,22,106,75,78,133,102,89,224,241,19,73,88,86,35,67,109,114,142,139,76,136,183,186,196,190,207,148},209,9),
+    Desc = F3_hub_d5t_decode({186,155,151,213,182,172,240,209,188,11,236,226,38,7,223,65,35,246,92,61,35,119,89,50,146,115,88,173,142,147,200,169,147,227,196,194,254,223,225,25,250,224,52,22,232,79,48,26,106,75,61,133,102,104,160,129,103,187,156,161,214,184,136,241,210,196,12,237,245,39,9,225,66,35,33,93,63,18,120,89,43,147,116,106,174,144,105,201,170,144,228,197,200,255,224,211,26,252,204,53,22,5,80,49,57,107,77,37,134,103,101,161,130,110,188,158,119,215,184,182,242,211,171,13,238,192,40,9,11,67,36,14,94,63,17,121,90,93,148,117,105,175,144,118,202,171,174,229,198,185},209,9),
+    _yx32gd = false,
+    Callback = function(_yx32gd)
+        _wyrzd.AntiDeathSystem = _yx32gd
+    end
+})
+
+_ig7ud:Section({ Title = F3_hub_d5t_decode({178,149,196,166,30,223,183,242,166,3,231,21,247,111,48,8,67,247,84,56,102,72,121,51,138,116,228,245,35,78,74,90,102,104,53},209,9) })
+
+_ig7ud:Toggle({
+    Title = F3_hub_d5t_decode({178,136,196,173,215,142,232,192,250,220,84,21,248,39,9,129,66,26,85,9,103,29,120,91,139,67,157,81,246,183,146,201,167,219,182,53,246,206,9,189,26,238,44,14,62,37},209,9),
+    Desc = F3_hub_d5t_decode({178,149,196,166,30,224,149,241,211,3,220,21,255,111,49,229,67,247,84,49,103,31,120,80,139,63,228,250,246,183,143,201,176,219,198,237,213,71,9,195,27,209,44,15,63,243,81,4,170,107,70,125,91,143,106,233,170,130,189,113,206,162,224,194,242,217,4,193,94,31,247,49,24,67,46,85,61,175,113,38,130,100,148,110,238,175,139,193,153,212,138,230,160,247,209,81,19,205,36,6,54,19,72,50,91,14},209,9),
+    _yx32gd = true,
+    Callback = function(_yx32gd)
+        _wyrzd.UndergroundButtonEnabled = _yx32gd
+        if _14we1m2 then
+            _14we1m2.Enabled = _yx32gd
+        end
+    end
+})
+
+_ig7ud:Paragraph({
+    Title = F3_hub_d5t_decode({178,154,196,166,215,145,233,155,250,212,84,21,237,40,220,57,17,75,47,93,56,111,78,129,97,147,107,166,91},209,9),
+    Desc = "الزر الأخضر ⬇ = ينزلك تحت الأرض\nالزر الأحمر ⬆ = يرجعك للمكان الأصلي"
+})
+
+
+local _17do2zy = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({42,47,45,78,67,89},209,9), Icon = F3_hub_d5t_decode({79,86,81,103,113},209,9) })
+_17do2zy:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,244,65,34,44,92,62,23,119,89,41,146,115,105,173,143,103,200,169,147},209,9) })
+_17do2zy:Paragraph({
+    Title = F3_hub_d5t_decode({29,82,89,94,108,110,48,108,145,154,162,107,116,125},209,9),
+    Desc = F3_hub_d5t_decode({186,155,151,213,182,168,240,209,201,11,236,209,38,7,244,65,34,44,92,62,23,119,89,41,146,115,105,173,143,103,200,169,147,227,196,183,254,223,225,25,250,210,52,22,234,79,48,34,106,76,36,133,103,55,160,129,109,187,156,161,214,183,156,241,211,166,12,237,200,39,9,226,66,35,251,93,62,65,120,89,67},209,9)
+})
+
+
+local _14aq1f8 = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({39,44,63,56},209,9), Icon = F3_hub_d5t_decode({77,72,96,105,103,117,119,140},209,9) })
+_14aq1f8:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,5,65,34,42,92,62,22,119,88,66,146,116,74},209,9) })
+_14aq1f8:Paragraph({
+    Title = F3_hub_d5t_decode({29,82,89,94,108,110,48,108,145,154,162,107,116,125},209,9),
+    Desc = F3_hub_d5t_decode({186,155,151,213,182,168,240,209,201,11,236,209,38,7,5,65,34,42,92,62,22,119,88,66,146,116,74,237,182,151,138,209,178,180,236,205,165,7,233,189,34,3,245,61,31,247,88,58,10,115,84,64,142,111,116,169,138,111,196,166,121,223,192,155,250,220,181,21,246,206,48,17,20,75,44,22},209,9)
+})
+
+
+local _mkzlp = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({28,88,101},209,9), Icon = F3_hub_d5t_decode({77,75,91,101,110,112,126,128,79,142,149,175,186},209,9) })
+_mkzlp:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,227,65,34,42,92,62,23,119,88,86,146,115,70,173,142,140,200,169,129},209,9) })
+_mkzlp:Paragraph({
+    Title = F3_hub_d5t_decode({29,82,89,94,108,110,48,108,145,154,162,107,116,125},209,9),
+    Desc = F3_hub_d5t_decode({186,155,151,213,182,168,240,209,201,11,236,209,38,7,227,65,34,42,92,62,23,119,88,86,146,115,70,173,142,140,200,169,129,227,196,183,254,223,225,25,250,210,52,22,234,79,48,34,106,76,36,133,103,55,160,129,109,187,156,161,214,183,156,241,211,166,12,237,200,39,9,226,66,35,251,93,62,65,120,89,67},209,9)
+})
+
+
+local _12kkew = _6rm1gh:Tab({ Title = F3_hub_d5t_decode({48,72,84,94,97,115,117},209,9), Icon = F3_hub_d5t_decode({61,68,94},209,9) })
+_12kkew:Section({ Title = F3_hub_d5t_decode({186,155,143,213,182,183,240,209,188,11,236,215,38,7,250,65,34,37,92,61,39,119,88,71,146,115,118,173,142,138,200,169,147,227,196,197},209,9) })
+_12kkew:Paragraph({
+    Title = F3_hub_d5t_decode({29,82,89,94,108,110,48,108,145,154,162,107,116,125},209,9),
+    Desc = F3_hub_d5t_decode({186,155,151,213,182,168,240,209,201,11,236,209,38,7,250,65,34,37,92,61,39,119,88,71,146,115,118,173,142,138,200,169,147,227,196,197,254,223,210,25,250,252,52,21,237,79,49,5,106,75,61,133,103,63,160,130,82,187,156,136,214,183,188,241,210,183,12,238,193,39,8,227,66,36,253,93,62,22,120,89,92,147,116,94},209,9)
+})
